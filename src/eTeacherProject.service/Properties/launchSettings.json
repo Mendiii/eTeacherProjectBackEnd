@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "eTeacherProject": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:5002",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "launchUrl": "swagger"
+    }
+  }
+}
