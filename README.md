@@ -24,6 +24,10 @@ The API exposes endpoints for managing **Students, Courses, and Enrolments**, su
 - Full CRUD support for enrolments
 - Returns clear error messages when enrolments or students are not found
 
+
+<img width="1122" height="800" alt="image" src="https://github.com/user-attachments/assets/f5d602e5-f792-48cc-b866-56aa4f907256" />
+
+
 ---
 
 ## Architecture
@@ -79,3 +83,4 @@ The API exposes endpoints for managing **Students, Courses, and Enrolments**, su
    dotnet restore
    dotnet build
    dotnet run
+
