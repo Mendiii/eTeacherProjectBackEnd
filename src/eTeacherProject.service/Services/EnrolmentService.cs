@@ -49,7 +49,7 @@ public class EnrolmentService : IEnrolmentService
         if (enrolment.StudentsId.Contains(studentId))
         {
             throw new GeneralErrorException(
-                $"Student with id {studentId} is already assigned to enrolment {enrolmentId}.");
+                $"Student already assigned to enrolment {enrolmentId}.");
         }
 
         enrolment.StudentsId.Add(studentId);
