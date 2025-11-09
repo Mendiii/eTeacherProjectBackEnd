@@ -97,9 +97,11 @@ The project includes both automated and manual testing to ensure reliability and
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Mendiii/eTeacherProjectBackEnd.git
+   cd eTeacherProjectBackEnd/src/eTeacherProject.service
    dotnet restore
    dotnet build
    dotnet run
+
 
 
 
