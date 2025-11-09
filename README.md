@@ -79,8 +79,8 @@ The API exposes endpoints for managing **Students, Courses, and Enrolments**, su
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Mendiii/eTeacherProjectBackEnd.git
-   cd eTeacherProject
    dotnet restore
    dotnet build
    dotnet run
+
 
