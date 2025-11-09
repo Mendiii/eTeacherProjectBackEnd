@@ -67,6 +67,24 @@ The API exposes endpoints for managing **Students, Courses, and Enrolments**, su
 
 ---
 
+## Tests
+
+The project includes both automated and manual testing to ensure reliability and correctness of the API.
+
+- **Unit Tests (MSTest)**
+  - services are covered with unit tests.
+  - Tests are written using the MSTest and can be executed with:
+    ```bash
+    dotnet test
+    ```
+
+- **API Tests (Postman)**
+  - A collection of **Postman scripts** is provided to test the API endpoints.
+  - Covers common scenarios such as creating, updating, deleting, and retrieving Students, Courses, and Enrolments.
+  - Useful for manual verification and regression testing during development.
+
+---
+
 ## Installation & Running the Service
 
 ### Prerequisites
@@ -82,5 +100,6 @@ The API exposes endpoints for managing **Students, Courses, and Enrolments**, su
    dotnet restore
    dotnet build
    dotnet run
+
 
 
