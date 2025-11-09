@@ -30,4 +30,13 @@ public class StudentService : IStudentService
         await _repo.UpdateAsync(student);
         return true;
     }
+
+    public async Task<bool> DeleteStudentAsync(int id)
+    {
+        var existing = await _repo.GetByIdAsync(id);
+        if (existing is null) return false;
+
+        await _repo.DeleteAsync(id);
+        return true;
+    }
 }

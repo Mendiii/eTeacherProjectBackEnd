@@ -54,4 +54,11 @@ public class StudentsController : ControllerBase
         var ok = await _service.UpdateStudentAsync(id, existing);
         return ok ? NoContent() : BadRequest();
     }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var ok = await _service.DeleteStudentAsync(id);
+        return ok ? NoContent() : NotFound();
+    }
 }
