@@ -71,4 +71,11 @@ public class EnrolmentsController : ControllerBase
         var ok = await _service.UpdateEnrolmentAsync(id, existing);
         return ok ? NoContent() : BadRequest();
     }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var ok = await _service.DeleteEnrolmentAsync(id);
+        return ok ? NoContent() : NotFound();
+    }
 }

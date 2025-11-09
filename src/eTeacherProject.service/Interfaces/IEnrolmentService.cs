@@ -12,4 +12,5 @@ public interface IEnrolmentService
     Task<int> AddEnrolmentAsync(Enrolment enrolment);
     Task AssignStudentAsync(int enrolmentId, int studentId);
     Task<bool> UpdateEnrolmentAsync(int id, Enrolment enrolment);
+    Task<bool> DeleteEnrolmentAsync(int id);
 }

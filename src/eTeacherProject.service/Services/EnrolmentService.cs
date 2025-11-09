@@ -62,5 +62,15 @@ public class EnrolmentService : IEnrolmentService
         await _enrolmentsRepo.UpdateAsync(enrolment);
         return true;
     }
+
+    public async Task<bool> DeleteEnrolmentAsync(int id)
+    {
+        var existing = await _enrolmentsRepo.GetByIdAsync(id);
+        if (existing is null) return false;
+
+        await _enrolmentsRepo.DeleteAsync(id);
+        return true;
+    }
+
 }
 
