@@ -1,0 +1,1392 @@
+{
+	"info": {
+		"_postman_id": "9bbf2563-0613-40fa-b665-d35251268297",
+		"name": "eTeacherProj",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "1. Create student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Location header matches expected value\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Location\")).to.eql(\"http://localhost:5002/api/Students/1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data matches expected person\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"Johnson mcAdams\");\r",
+									"    pm.expect(jsonData.telephone).to.eql(\"+1-555-123-4567\");\r",
+									"    pm.expect(jsonData.address).to.eql(\"123 Main Street, Springfield\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Johnson mcAdams\",\r\n    \"telephone\": \"+1-555-123-4567\",\r\n    \"address\": \"123 Main Street, Springfield\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get student by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected person\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"Johnson mcAdams\");\r",
+									"    pm.expect(jsonData.telephone).to.eql(\"+1-555-123-4567\");\r",
+									"    pm.expect(jsonData.address).to.eql(\"123 Main Street, Springfield\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get all students",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Update student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jhony mcAdams\",\r\n    \"telephone\": \"+1-317-123-4567\",\r\n    \"address\": \"123 Main Street, Springfield\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get student by id after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected person\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"jhony mcAdams\");\r",
+									"    pm.expect(jsonData.telephone).to.eql(\"+1-317-123-4567\");\r",
+									"    pm.expect(jsonData.address).to.eql(\"123 Main Street, Springfield\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Update student [not-exist]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jhony mcAdams\",\r\n    \"telephone\": \"+1-555-123-4567\",\r\n    \"address\": \"123 Main Street, Springfield\",\r\n    \"courseId\": 101\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/students/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Delete student by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Get student by Id [not exist]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "1. Create course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Location header matches expected value\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Location\")).to.eql(\"http://localhost:5002/api/Courses/1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data matches expected course\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Introduction to Computer Science\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"A beginner-friendly course covering programming basics, algorithms, and problem solving.\");\r",
+									"    pm.expect(jsonData.lecturer).to.eql(\"Dr. Emily Carter\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Introduction to Computer Science\",\r\n  \"description\": \"A beginner-friendly course covering programming basics, algorithms, and problem solving.\",\r\n  \"lecturer\": \"Dr. Emily Carter\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get course by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected course\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Introduction to Computer Science\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"A beginner-friendly course covering programming basics, algorithms, and problem solving.\");\r",
+									"    pm.expect(jsonData.lecturer).to.eql(\"Dr. Emily Carter\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get all courses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Update Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Data Structures and Algorithms\",\r\n    \"description\": \"An intermediate-level course focusing on efficient data organization, algorithm design, and complexity analysis.\",\r\n    \"lecturer\": \"Prof. Jonathan Lee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get course by id after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected course\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Data Structures and Algorithms\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"An intermediate-level course focusing on efficient data organization, algorithm design, and complexity analysis.\");\r",
+									"    pm.expect(jsonData.lecturer).to.eql(\"Prof. Jonathan Lee\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Update course [not-exist]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Data Structures and Algorithms\",\r\n    \"description\": \"An intermediate-level course focusing on efficient data organization, algorithm design, and complexity analysis.\",\r\n    \"lecturer\": \"Prof. Jonathan Lee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/courses/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Delete course by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get course by id [not exist]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enrolments",
+			"item": [
+				{
+					"name": "1. Create enrolments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"enrolmentId\", jsonData.id);\r",
+									"\r",
+									"pm.test(\"Location header matches expected value\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Location\")).to.eql(\"http://localhost:5002/api/Enrolments/\"  + pm.environment.get(\"enrolmentId\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data matches expected enrolment\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Spring Semester Enrolment\");\r",
+									"    pm.expect(jsonData.startAt).to.eql(\"2025-02-15T09:00:00Z\");\r",
+									"    pm.expect(jsonData.courseId).to.eql(101);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Spring Semester Enrolment\",\r\n  \"startingDate\": \"2025-02-15T09:00:00Z\",\r\n  \"courseId\": 101\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get enrolment by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected enrolment\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Spring Semester Enrolment\");\r",
+									"    pm.expect(jsonData.startAt).to.eql(\"2025-02-15T09:00:00Z\");\r",
+									"    pm.expect(jsonData.courseId).to.eql(101);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get all enrolments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Update enrolment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Winter Semester Enrolment\",\r\n  \"startingDate\": \"2026-02-15T09:00:00Z\",\r\n  \"courseId\": 205\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get enrolments by id after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected enrolment\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Winter Semester Enrolment\");\r",
+									"    pm.expect(jsonData.startAt).to.eql(\"2026-02-15T09:00:00Z\");\r",
+									"    pm.expect(jsonData.courseId).to.eql(205);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Update enrolments [not-exist]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Data Structures and Algorithms\",\r\n    \"description\": \"An intermediate-level course focusing on efficient data organization, algorithm design, and complexity analysis.\",\r\n    \"lecturer\": \"Prof. Jonathan Lee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Create student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"studentId\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Johnson mcAdams\",\r\n    \"telephone\": \"+1-555-123-4567\",\r\n    \"address\": \"123 Main Street, Springfield\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Assign student to enrolment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// const jsonData = pm.response.json();\r",
+									"// pm.environment.set(\"enrolmentId\", jsonData.id);\r",
+									"\r",
+									"// pm.test(\"Location header matches expected value\", function () {\r",
+									"//     pm.expect(pm.response.headers.get(\"Location\")).to.eql(\"http://localhost:5002/api/Enrolments/\"  + pm.environment.get(\"enrolmentId\"));\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"Data matches expected enrolment\", function () {\r",
+									"//     pm.expect(jsonData.title).to.eql(\"Spring Semester Enrolment\");\r",
+									"//     pm.expect(jsonData.startAt).to.eql(\"2025-02-15T09:00:00Z\");\r",
+									"//     pm.expect(jsonData.courseId).to.eql(101);\r",
+									"// });\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{studentId}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}/assign-student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}",
+								"assign-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Get enrolments by id after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Data matches expected enrolment\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Winter Semester Enrolment\");\r",
+									"    pm.expect(jsonData.startAt).to.eql(\"2026-02-15T09:00:00Z\");\r",
+									"    pm.expect(jsonData.courseId).to.eql(205);\r",
+									"    pm.expect(jsonData.studentsId[0]).to.eql(pm.environment.get(\"studentId\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. Assign not exist student to enrolment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "12121212",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}/assign-student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}",
+								"assign-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11. Delete enrolment by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12. Get enrolment by id [not exist]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments/{{enrolmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments",
+								"{{enrolmentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DTO Validation",
+			"item": [
+				{
+					"name": "1. Test student DTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error title is correct\", function () {\r",
+									"    pm.expect(response.title).to.eql(\"One or more validation errors occurred.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Errors contain Name, Address, Telephone\", function () {\r",
+									"    pm.expect(response.errors).to.have.property(\"Name\");\r",
+									"    pm.expect(response.errors).to.have.property(\"Address\");\r",
+									"    pm.expect(response.errors).to.have.property(\"Telephone\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error messages are correct\", function () {\r",
+									"    pm.expect(response.errors.Name[0]).to.eql(\"Name is required\");\r",
+									"    pm.expect(response.errors.Address[0]).to.eql(\"Address is required\");\r",
+									"    pm.expect(response.errors.Telephone[0]).to.eql(\"Telephone is required\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"telephone\": \"\",\r\n    \"address\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Test course DTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error title is correct\", function () {\r",
+									"    pm.expect(response.title).to.eql(\"One or more validation errors occurred.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Errors contain Title, Lecturer, Description\", function () {\r",
+									"    pm.expect(response.errors).to.have.property(\"Title\");\r",
+									"    pm.expect(response.errors).to.have.property(\"Lecturer\");\r",
+									"    pm.expect(response.errors).to.have.property(\"Description\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error messages are correct\", function () {\r",
+									"    pm.expect(response.errors.Title[0]).to.eql(\"Title is required\");\r",
+									"    pm.expect(response.errors.Lecturer[0]).to.eql(\"Lecturer is required\");\r",
+									"    pm.expect(response.errors.Description[0]).to.eql(\"Description is required\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"\",\r\n  \"lecturer\": \"\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Test enrolments DTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error title is correct\", function () {\r",
+									"    pm.expect(response.title).to.eql(\"One or more validation errors occurred.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Errors contain Title, Lecturer, Description\", function () {\r",
+									"    pm.expect(response.errors).to.have.property(\"Title\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error messages are correct\", function () {\r",
+									"    pm.expect(response.errors.Title[0]).to.eql(\"Title is required\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"\",\r\n  \"startingDate\": \"2025-02-15\",\r\n  \"courseId\": 0 \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/enrolments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"enrolments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
