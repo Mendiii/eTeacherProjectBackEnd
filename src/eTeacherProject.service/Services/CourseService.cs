@@ -31,4 +31,12 @@ public class CourseService : ICourseService
         await _repo.UpdateAsync(course);
         return true;
     }
+    public async Task<bool> DeleteCourseAsync(int id)
+    {
+        var existing = await _repo.GetByIdAsync(id);
+        if (existing is null) return false;
+
+        await _repo.DeleteAsync(id);
+        return true;
+    }
 }
